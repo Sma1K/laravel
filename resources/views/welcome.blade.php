@@ -1,4 +1,5 @@
-<!doctype html>
+@extends('layouts.app')
+        <!doctype html>
 <html lang="{{ app()->getLocale() }}">
     <head>
         <meta charset="utf-8">
@@ -64,31 +65,37 @@
             }
         </style>
     </head>
-    <body>
+    <body style="background-image: url({{asset('img/sport.jpg')}})">
+
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
-                    @endif
-                </div>
+
+
+
+
+
+                {{--<div class="top-right links">--}}
+
+                    {{--@if (Auth::check())--}}
+                        {{--<a href="{{ url('/home') }}" style="color: #cccc00">Home</a>--}}
+                    {{--@else--}}
+                        {{--<a href="{{ url('/login') }}" style="color: #cccc00">Login</a>--}}
+                        {{--<a href="{{ url('/register') }}" style="color: #cccc00;">Register</a>--}}
+                    {{--@endif--}}
+                {{--</div>--}}
+
+
+
+
             @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
+            <div class="content" style="background-color: rgba(0,0,0,.7); border-radius: 15px; display: table; padding: 50px;">
+                <div class="title m-b-md" style="display: table-cell;">
+                    <span style="color: aqua;font-weight: bold ">Sports<i></i></span><span style="color: #cccc00; font-weight: bold">KZ</span>
+                    <div style="color: white; font-size: 20px">Not registered yet? Click here<span style="font-size: 20px; color:Tomato">
+                            <a style="color: white" href="{{'/register'}}"><i class="fas fa-registered"></i></a></span>
+                    </div>
                 </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
             </div>
         </div>
     </body>

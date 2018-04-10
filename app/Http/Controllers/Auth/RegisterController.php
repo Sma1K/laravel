@@ -8,7 +8,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Mail;
-
+use Illuminate\Http\Request;
+use Storage;
 class RegisterController extends Controller
 {
     /*
@@ -62,16 +63,24 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create(Request $request,array $data)
     {
+        if($request->hasFile("image")){
+            /*dd($request->file("image"));*/
+            $name = Storage::put("images",$request->file("image"));
+            $url =Storage::url($name);
+            //dd($url);
+        }
         $str = str_random(30);
+
         $data['activation_code']=$str;
         Mail::to($data['email'])->send(new UserSignedUp($data));
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'activation_code'=>$str
+            'activation_code'=>$str,
+            'image'=>$url
         ]);
     }
 }

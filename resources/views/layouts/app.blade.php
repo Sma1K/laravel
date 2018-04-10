@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>SportsKZ</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -28,8 +28,8 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                    <a class="navbar-brand" href="{{ url('/home') }}" style="color: #fff">
+                        SportsKZ
                     </a>
                 </div>
 
@@ -46,8 +46,9 @@
                             <li><a href="{{ route('login') }}" style="color: #fff">Login</a></li>
                             <li><a href="{{ route('register') }}" style=" color: #fff">Register</a></li>
                         @else
+                            <img src="{{Auth::user()->image}}" alt="" height="40px" width="40px">
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="color: #fff">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
@@ -63,6 +64,9 @@
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
+                                    <li>
+                                        <a href="{{route('export')}}">Export</a>
+                                    </li>
                                 </ul>
                             </li>
                         @endif
@@ -77,5 +81,6 @@
     <!-- Scripts -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
     <script src="{{ asset('js/app.js') }}"></script>
+    @yield("scripts")
 </body>
 </html>

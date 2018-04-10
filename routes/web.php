@@ -29,3 +29,7 @@ Route::get('/sendEmail', function()
     return "emailSent";
 
 })->middleware("auth");
+
+Route::resource("/news","NewsController");
+Route::post("/comment","HomeController@comment");
+Route::get('/export', 'HomeController@export')->name('export');

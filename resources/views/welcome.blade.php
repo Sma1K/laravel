@@ -69,11 +69,6 @@
 
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
-
-
-
-
-
                 {{--<div class="top-right links">--}}
 
                     {{--@if (Auth::check())--}}
@@ -83,10 +78,6 @@
                         {{--<a href="{{ url('/register') }}" style="color: #cccc00;">Register</a>--}}
                     {{--@endif--}}
                 {{--</div>--}}
-
-
-
-
             @endif
             <div class="content" style="background-color: rgba(0,0,0,.7); border-radius: 15px; display: table; padding: 50px;">
                 <div class="title m-b-md" style="display: table-cell;">

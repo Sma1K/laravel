@@ -65,8 +65,12 @@
                                         </form>
                                     </li>
                                     <li>
+                                        <a href="{{route('create')}}">Create an Article</a>
+                                    </li>
+                                    <li>
                                         <a href="{{route('export')}}">Export</a>
                                     </li>
+
                                 </ul>
                             </li>
                         @endif

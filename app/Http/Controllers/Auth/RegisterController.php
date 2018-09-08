@@ -67,7 +67,7 @@ class RegisterController extends Controller
     {
         if($request->hasFile("image")){
             /*dd($request->file("image"));*/
-            $name = Storage::put("images",$request->file("image"));
+            $name = Storage::put("/images",$request->file("image"));                                            ///////////////////////////<<<<<<<<<<<<<-------------------------
             $url =Storage::url($name);
             //dd($url);
         }

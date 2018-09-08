@@ -3,18 +3,28 @@
 @section('content')
     <div class="container" style="margin-top: 50px">
         <h1 class="text-center">Latest news</h1>
-        @foreach($news as $ne)
-           <h1><b>{{$ne->title}} ({{$ne->category->name}})</b></h1>
-            <div>
-                <img src="{{$ne->image}}" alt="">
-            </div>
-            <div style="margin-left: 200px"><p>{{$ne->text}}</p></div>
-            <a href="/news/{{$ne->id}}/edit"><button><i class="fas fa-edit"></i>Edit</button></a>
-            <div class="author">{{$ne->user->email}} </div>
-            <div class="pDate">{{$ne->created_at}}</div>
 
+        @foreach($news as $ne)
+
+
+
+           <h1><b>{{$ne->title}} ({{$ne->category->name}})</b></h1>
+        <div>
+            <div style="width: 300px; height: 300px; float: left; margin-bottom: 20px;">
+                <img src="{{$ne->image}}" alt="" style="width: 300px; height: 300px;">
+            </div>
+            <div style="margin-left: 200px ; width: 600px;float: left;"><p>{{$ne->text}}</p></div>
+        </div>
+        <br>
+        <br>
+        <div class="lilbtns" style="display: block; width: 150px;">
+            <a href="/news/{{$ne->id}}/edit" ><button><i class="fas fa-edit"></i>Edit</button></a>
+            <div class="author" >{{$ne->user->email}} </div>
+            <div class="pDate" >{{$ne->created_at}}</div>
+        </div>
+        <div>
             <hr>
-            <h1>Comments</h1>
+            <h1>-Comments-</h1>
             @foreach($ne->comments as $comment)
                 <div class="comments">
                     <div class="comment">{{$comment->comment}}</div>
@@ -26,13 +36,14 @@
                 @endforeach
             <form action="/comment" method="post" id="formes1">
                 {{csrf_field()}}
-                <textarea cols="100" rows="5" class="text-center" name = "comment"></textarea>
+                <textarea cols="100" rows="5" class="text-center" name = "comment" style="margin-left: 20px; margin-bottom: 5px;"></textarea>
                 <input type="hidden" value="{{$ne->id}}" name="news_id">
                 <br/>
-                <input type="submit" value="Send">
+                <input type="submit" value="Send" style="margin-left: 20px">
             </form>
-
+            <hr>
         @endforeach
+        </div>
         {{$news->links()}}
     </div>
 @endsection

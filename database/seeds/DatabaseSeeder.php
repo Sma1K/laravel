@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     {
 //        $this->call(FillUsers::class);
         $this->call(CategoryFill::class);
-        $this->call(CommentsSeed::class);
-        $this->call(ArticlesFill::class);
+       // $this->call(CommentsSeed::class);
+      //  $this->call(ArticlesFill::class);
     }
 }

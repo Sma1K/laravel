@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
-use Storage;
+use Illuminate\Support\Facades\Storage;
 use App\Category;
 use App\Article;
 class NewsController extends Controller
@@ -21,10 +21,11 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         $news = new Article();
+        $news->title=$request->title;
         $news->category_id=$request->category_id;
         $news->text =$request->text;
-        $name = Storage::put("images",$request->file("image"));
-        $url =Storage::url($name);
+        $name = Storage::put("/images",$request->file("image"));
+        $url = Storage::url($name);
         $news->image=$url;
         $news->user_id=Auth::user()->id;
         $news->save();
@@ -107,6 +108,7 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $news = Article::find($id);
+
     }
 }

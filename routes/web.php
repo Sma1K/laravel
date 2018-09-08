@@ -17,7 +17,6 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home')->middleware(['auth', 'activated']);
 Route::get("/auth/{code}", "ActivationController@auth");
 Route::get("/activateAccount", function(){return view("activateAccount");})->middleware('auth');
@@ -33,3 +32,4 @@ Route::get('/sendEmail', function()
 Route::resource("/news","NewsController");
 Route::post("/comment","HomeController@comment");
 Route::get('/export', 'HomeController@export')->name('export');
+Route::get('/create', 'NewsController@create')->name('create');
